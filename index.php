@@ -9,21 +9,21 @@ if(isset($_POST['login']))
     $query=mysqli_query($con,"select ID from tbladmin where  UserName='$adminuser' && Password='$password' ");
     $ret=mysqli_fetch_array($query);
     if($ret>0){
-      $_SESSION['aid']=$ret['ID'];
-     header('location:add-category.php');
+        $_SESSION['aid']=$ret['ID'];
+       header('location:add-category.php');
+      }
+      else{
+       echo "<script>alert('Invalid details. Please try again.');</script>";   
+     echo "<script>window.location.href='dashboard.php'</script>";
+      }
     }
-    else{
-     echo "<script>alert('Invalid details. Please try again.');</script>";   
-   echo "<script>window.location.href='dashboard.php'</script>";
-    }
-  }
   ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Login Page</title>
+    <title>FarmLact</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -44,7 +44,7 @@ if(isset($_POST['login']))
         <div class="hk-pg-wrapper hk-auth-wrapper">
             <header class="d-flex justify-content-between align-items-center">
 <a class="d-flex auth-brand align-items-center" href="#">
-<span class="text-white font-30">Dairy Farm Shop Management System</span>
+<span class="text-white font-30">Farmlact Management System</span>
                 </a>
                
             </header>
@@ -74,7 +74,7 @@ if(isset($_POST['login']))
                         <div class="auth-form-wrap py-xl-0 py-50">
      <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
                                 <form method="post">
-                                    <h1 class="display-4 mb-10">Welcome Back :)</h1>
+                                    <h1 class="display-4 mb-10">Welcome :)</h1>
                                  
 <div class="form-group">
 <input class="form-control" placeholder="Username" type="text" name="username" required="true">
@@ -82,7 +82,7 @@ if(isset($_POST['login']))
 
 <div class="form-group">
 <div class="input-group">
-<input class="form-control" placeholder="Password" type="password" name="password" required="true">
+<input class="form-control" placeholder="Password" type="text" name="password" required="true">
 <div class="input-group-append">
 <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
 </div>
